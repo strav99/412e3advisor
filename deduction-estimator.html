@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/png" href="/remain-mark.png" />
+<link rel="apple-touch-icon" href="/remain-mark.png" />
+<title>412(e)(3) Deduction Estimator &mdash; Estimate Your Annual Deductible Contribution | 412(e)(3) Advisor</title>
+<meta name="description" content="Estimate the annual tax-deductible contribution a 412(e)(3) fully-insured defined-benefit plan could allow for your age, income, and retirement runway — and how it compares to a SEP-IRA or solo 401(k). Illustrative only." />
+<link rel="canonical" href="https://412e3advisor.com/deduction-estimator" />
+<meta name="robots" content="index, follow" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="412(e)(3) Advisor" />
+<meta property="og:title" content="412(e)(3) Deduction Estimator — Estimate Your Annual Deductible Contribution" />
+<meta property="og:description" content="Estimate the annual deductible contribution a 412(e)(3) plan could allow for your age, income, and runway — versus a SEP or solo 401(k). Illustrative only." />
+<meta property="og:url" content="https://412e3advisor.com/deduction-estimator" />
+<meta property="og:image" content="https://412e3advisor.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="412(e)(3) Advisor — deduction estimator." />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="412(e)(3) Deduction Estimator" />
+<meta name="twitter:description" content="Estimate the annual deductible contribution a 412(e)(3) plan could allow for your age, income, and runway. Illustrative only." />
+<meta name="twitter:image" content="https://412e3advisor.com/og-image.png" />
+<meta name="twitter:image:alt" content="412(e)(3) Advisor — deduction estimator." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/site.css" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "412(e)(3) Advisor", "item": "https://412e3advisor.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Deduction Estimator", "item": "https://412e3advisor.com/deduction-estimator" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "412(e)(3) Deduction Estimator",
+  "url": "https://412e3advisor.com/deduction-estimator",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript.",
+  "description": "An illustrative estimator of the annual tax-deductible contribution a 412(e)(3) fully-insured defined-benefit plan could support, based on age, retirement age, and income.",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Remain Life Insurance Services, LLC",
+    "url": "https://remainlifeinsurance.com/"
+  }
+}
+</script>
+<style>
+  .est-wrap { padding: clamp(2.5rem, 6vh, 4rem) 0; }
+  .est-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (max-width: 820px) { .est-grid { grid-template-columns: 1fr; } }
+  .est-form { background: var(--paper-soft); border: 1px solid var(--paper-line); border-radius: 4px; padding: clamp(1.5rem, 3vw, 2.25rem); }
+  .est-field { margin-bottom: 1.4rem; }
+  .est-field:last-child { margin-bottom: 0; }
+  .est-field label { display: block; font-family: var(--label); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy-mid); font-weight: 600; margin-bottom: 0.55rem; }
+  .est-field input, .est-field select {
+    width: 100%; box-sizing: border-box; font-family: var(--sans); font-size: 1rem; color: var(--navy);
+    background: var(--paper); border: 1px solid var(--paper-line); border-radius: 3px; padding: 0.7rem 0.85rem; transition: border-color 200ms ease;
+  }
+  .est-field input:focus, .est-field select:focus { outline: none; border-color: var(--gold); }
+  .est-hint { font-size: 0.82rem; color: var(--fog); margin: 0.4rem 0 0; line-height: 1.4; }
+  .est-results { min-height: 100%; }
+  .est-results .metrics-grid { grid-template-columns: 1fr; gap: 0; }
+  .est-results .metric { padding: 1.3rem 0; border-bottom: 1px solid var(--paper-line); }
+  .est-results .metric:last-child { border-bottom: 0; }
+  .est-results .figure { margin: 0 0 0.3rem; }
+  .est-note { font-size: 0.85rem; color: var(--fog); line-height: 1.55; margin: 1.75rem 0 0; padding-top: 1.25rem; border-top: 1px solid var(--paper-line); }
+  .est-empty { color: var(--fog); font-size: 1.02rem; line-height: 1.6; }
+  .est-error { color: #9a3b2f; font-size: 0.95rem; line-height: 1.5; }
+  .est-cta { margin-top: 1.75rem; }
+</style>
+</head>
+
+<body>
+
+<!-- ──────────────────────── HEADER ──────────────────────── -->
+<header class="site">
+  <div class="container row">
+    <a href="/" class="wordmark-small" aria-label="412(e)(3) Advisor — home">
+      <img class="wm-mark" src="/remain-mark.png" alt="" />
+      <span class="wm-text">
+        <span class="wm-name"><span class="wm-num">412(e)(3)</span> <span class="wm-word">Advisor</span></span>
+      </span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="/how-it-works">The Process</a>
+      <a href="/#contact" class="cta">Begin A Conversation</a>
+    </nav>
+    <a href="https://remainlifeinsurance.com" class="nav-assess"><span class="na-label">Remain&nbsp;Life</span><span class="na-arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ──────────────────────── HERO BAND ──────────────────────── -->
+<section class="hero-band">
+  <div class="container">
+    <div class="crumb">
+      <a href="/">412(e)(3) Advisor</a>
+      <span class="sep">/</span>
+      <span>Deduction Estimator</span>
+    </div>
+
+    <div class="label-row">
+      <hr class="rule-gold" />
+      <span class="label">Illustrative Estimate</span>
+    </div>
+
+    <h1 class="display">
+      Estimate your <em>deductible contribution.</em>
+    </h1>
+
+    <p class="lede">
+      A 412(e)(3) is built to fund the largest possible guaranteed retirement benefit over your remaining working years &mdash; which is why an older, high-earning owner can often deduct far more than any defined-contribution plan allows. Enter a few details for a rough sense of the range. A full feasibility analysis produces your actual numbers.
+    </p>
+  </div>
+</section>
+
+<!-- ──────────────────────── ESTIMATOR ──────────────────────── -->
+<section class="metrics est-wrap">
+  <div class="container">
+    <div class="est-grid">
+
+      <form class="est-form" id="estForm" novalidate>
+        <div class="est-field">
+          <label for="age">Your current age</label>
+          <input type="number" id="age" inputmode="numeric" min="25" max="74" placeholder="e.g. 58" />
+        </div>
+        <div class="est-field">
+          <label for="retire">Planned retirement age</label>
+          <input type="number" id="retire" inputmode="numeric" min="55" max="75" value="65" />
+          <p class="est-hint">412(e)(3) plans fund over your remaining working years &mdash; a shorter runway concentrates a larger contribution.</p>
+        </div>
+        <div class="est-field">
+          <label for="income">Annual income from the business</label>
+          <input type="text" id="income" inputmode="numeric" placeholder="e.g. $650,000" />
+          <p class="est-hint">W-2 or net self-employment income the plan is based on.</p>
+        </div>
+        <div class="est-field">
+          <label for="rate">Combined marginal tax rate</label>
+          <select id="rate">
+            <option value="0.32">32% &mdash; federal only, mid bracket</option>
+            <option value="0.37">37% &mdash; top federal bracket</option>
+            <option value="0.40" selected>40% &mdash; high earner, low-tax state</option>
+            <option value="0.45">45% &mdash; high earner, high-tax state</option>
+            <option value="0.50">50% &mdash; top bracket, California</option>
+          </select>
+        </div>
+      </form>
+
+      <div class="est-results">
+        <div id="estOutput">
+          <p class="est-empty">Enter your age and income to see an estimated annual deductible contribution, how it compares to a SEP-IRA or solo 401(k), and the approximate tax it could save.</p>
+        </div>
+        <div class="est-cta">
+          <a href="/#contact" class="btn"><span>Request A Feasibility Analysis</span><span class="arrow">&rarr;</span></a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="est-note" style="max-width:78ch;">
+      <strong>Illustrative only.</strong> This estimator uses simplified assumptions &mdash; a guaranteed accumulation rate, a level annuity conversion factor, and the IRS maximum-benefit limit for defined-benefit plans &mdash; to suggest a rough range. It is not a quote, a projection of any specific plan, or tax advice. Your actual deductible contribution is set by the IRS maximum-benefit limit, your income, your census, and carrier-specific contract design, and is determined by a feasibility analysis run by Remain Life Insurance Services, LLC.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<!-- ──────────────────────── FOOTER ──────────────────────── -->
+<footer class="site">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-practice-frame">
+        <h4 class="footer-section-label">412(e)(3) Advisor</h4>
+        <nav class="footer-practice-grid" aria-label="Footer navigation">
+          <a href="/#what">The Plan</a>
+          <a href="/#fit">Who It Fits</a>
+          <a href="/#process">The Process</a>
+          <a href="/professional-pension">Professional Pensions</a>
+          <a href="/how-it-works">Feasibility &amp; Process</a>
+          <a href="/deduction-estimator" class="current">Deduction Estimator</a>
+          <a href="/#faq">FAQ</a>
+          <a href="/#contact">Request Feasibility</a>
+          <a href="https://remainlifeinsurance.com">Remain Life Insurance</a>
+          <a href="https://1035advisor.com">1035 Advisor</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-info-grid">
+        <div class="brand-col">
+          <div class="wordmark-foot">
+            <img class="wm-mark" src="/remain-mark.png" alt="" />
+            <span class="wm-text">
+              <span class="wm-name"><span class="wm-num">412(e)(3)</span> <span class="wm-word">Advisor</span></span>
+              <span class="sub">A Remain Life Practice</span>
+            </span>
+          </div>
+          <p>A focused 412(e)(3) and defined-benefit pension practice of Remain Life Insurance Services, LLC &mdash; a California-licensed brokerage.</p>
+        </div>
+        <div class="info-col">
+          <h4>Office</h4>
+          <div class="stack">
+            <a href="tel:+17607505433">(760) 750-LIFE (5433)</a>
+            <a href="mailto:office@remainlifeinsurance.com">office@remainlifeinsurance.com</a>
+            <p>Encinitas, California</p>
+            <a href="https://remainlifeinsurance.com">remainlifeinsurance.com &rarr;</a>
+          </div>
+        </div>
+        <div class="info-col">
+          <h4>Licensed Entity</h4>
+          <div class="stack">
+            <p>Remain Life Insurance Services, LLC</p>
+            <p>CA License #6019240</p>
+            <p>Encinitas, California 92024</p>
+          </div>
+        </div>
+      </div>
+      <div class="legal">
+        <p>412(e)(3) Advisor is a practice name of Remain Life Insurance Services, LLC. Information on this site is for general educational purposes and is not tax, legal, or investment advice, nor a solicitation or offer of insurance in any state where the firm is not licensed. 412(e)(3) plans involve insurance and annuity contracts and are subject to IRS qualification rules, underwriting, carrier approval, and policy terms. Consult your own tax and legal advisors before adopting any qualified plan.</p>
+        <p>&copy; <span id="year">2026</span> Remain Life Insurance Services, LLC &middot; 412e3advisor.com</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  (function () {
+    var MAX_BENEFIT = 280000;   // IRS §415(b) maximum annual DB benefit (illustrative, 2025)
+    var ANNUITY_FACTOR = 13;    // level annual benefit → lump sum at retirement (conservative)
+    var GUARANTEED_RATE = 0.035;// assumed guaranteed accumulation rate
+
+    var ageEl = document.getElementById('age');
+    var retEl = document.getElementById('retire');
+    var incEl = document.getElementById('income');
+    var rateEl = document.getElementById('rate');
+    var out = document.getElementById('estOutput');
+
+    function money(n) {
+      return '$' + Math.round(n).toLocaleString('en-US');
+    }
+    function roundTo(n, step) {
+      return Math.round(n / step) * step;
+    }
+    function parseNum(v) {
+      var n = parseFloat(String(v).replace(/[^0-9.]/g, ''));
+      return isNaN(n) ? null : n;
+    }
+
+    function show(html) { out.innerHTML = html; }
+
+    function compute() {
+      var age = parseNum(ageEl.value);
+      var retire = parseNum(retEl.value);
+      var income = parseNum(incEl.value);
+      var rate = parseFloat(rateEl.value);
+
+      if (age === null || income === null) {
+        show('<p class="est-empty">Enter your age and income to see an estimated annual deductible contribution, how it compares to a SEP-IRA or solo 401(k), and the approximate tax it could save.</p>');
+        return;
+      }
+      if (retire === null) retire = 65;
+
+      var years = retire - age;
+      if (years < 3) {
+        show('<p class="est-error">A 412(e)(3) is designed to fund over your remaining working years. Enter a retirement age at least 3 years beyond your current age to see an estimate.</p>');
+        return;
+      }
+      if (income < 1000) {
+        show('<p class="est-error">Enter your approximate annual income from the business to see an estimate.</p>');
+        return;
+      }
+
+      // Target benefit capped by the §415(b) limit and by income.
+      var benefit = Math.min(MAX_BENEFIT, income);
+      var targetLump = benefit * ANNUITY_FACTOR;
+      // Level annual contribution to accumulate the target at the guaranteed rate.
+      var growth = Math.pow(1 + GUARANTEED_RATE, years) - 1;
+      var annual = targetLump * GUARANTEED_RATE / growth;
+      // A deduction can't realistically exceed income.
+      annual = Math.min(annual, income);
+
+      var low = roundTo(annual * 0.85, 5000);
+      var high = roundTo(annual * 1.15, 5000);
+      var mid = roundTo(annual, 5000);
+      var sep = 70000;
+      var taxSaved = roundTo(mid * rate, 1000);
+      var multiple = (mid / sep);
+      var multipleTxt = multiple >= 1.1 ? ((Math.round(multiple * 10) / 10) + '× a SEP-IRA or solo 401(k)') : 'comparable to a SEP-IRA or solo 401(k)';
+
+      show(
+        '<div class="metrics-grid">' +
+          '<div class="metric">' +
+            '<p class="figure">' + money(low) + '&ndash;' + money(high) + '</p>' +
+            '<p class="k">Estimated annual deductible contribution</p>' +
+            '<p class="v">Roughly ' + multipleTxt + ', concentrated over your ' + years + '-year runway to retirement.</p>' +
+          '</div>' +
+          '<div class="metric">' +
+            '<p class="figure">' + money(taxSaved) + '</p>' +
+            '<p class="k">Estimated annual tax saved</p>' +
+            '<p class="v">At a ' + Math.round(rate * 100) + '% combined marginal rate on the deductible contribution.</p>' +
+          '</div>' +
+          '<div class="metric">' +
+            '<p class="figure">' + money(sep) + '</p>' +
+            '<p class="k">A SEP-IRA or solo 401(k), for contrast</p>' +
+            '<p class="v">The approximate ceiling on the plans most owners already use.</p>' +
+          '</div>' +
+        '</div>'
+      );
+    }
+
+    [ageEl, retEl, incEl].forEach(function (el) { el.addEventListener('input', compute); });
+    rateEl.addEventListener('change', compute);
+
+    // Format income with a leading $ on blur for readability.
+    incEl.addEventListener('blur', function () {
+      var n = parseNum(incEl.value);
+      if (n !== null) incEl.value = '$' + Math.round(n).toLocaleString('en-US');
+    });
+  })();
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (entries[i].isIntersecting) { entries[i].target.classList.add('in'); io.unobserve(entries[i].target); }
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+</script>
+
+</body>
+</html>
