@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/site.css?v=a1efbe47" />
+<link rel="stylesheet" href="/assets/site.css?v=844a607a" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -64,6 +64,7 @@
     </a>
     <nav class="primary" aria-label="Primary">
       <a href="/how-it-works">The Process</a>
+      <a href="/about">About</a>
       <a href="#contact" class="cta">Begin A Conversation</a>
     </nav>
     <a href="https://remainlifeinsurance.com" class="nav-assess"><span class="na-label">Remain&nbsp;Life</span><span class="na-arrow" aria-hidden="true">&rarr;</span></a>
@@ -216,6 +217,7 @@
           <a href="/deduction-estimator">Deduction Estimator</a>
           <a href="/#faq">FAQ</a>
           <a href="/#contact">Request Feasibility</a>
+          <a href="/about">About Us</a>
           <a href="https://remainlifeinsurance.com">Remain Life Insurance</a>
           <a href="https://1035advisor.com">1035 Advisor</a>
         </nav>
@@ -285,6 +287,18 @@
     var h = a.getAttribute('href') || '';
     var name = h.indexOf('tel:') === 0 ? 'call_click' : h.indexOf('sms:') === 0 ? 'text_click' : 'email_click';
     gtag('event', name, { link_url: h.split('?')[0], page_path: location.pathname });
+  });
+})();
+</script>
+<script>
+(function () {
+  // Desktop: show phone numbers as plain text (no app launching).
+  var desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !('ontouchstart' in window);
+  if (!desktop) return;
+  document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+    var s = document.createElement('span');
+    s.textContent = a.textContent;
+    a.replaceWith(s);
   });
 })();
 </script>

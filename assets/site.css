@@ -343,3 +343,23 @@ footer.site { color: var(--navy-deep); font-size: 0.875rem; }
 .contact-direct a { color: var(--paper); }
 .contact-direct a:hover { color: var(--gold-soft); }
 .contact-direct p { color: var(--mist); }
+
+/* ── About page ─────────────────────────────────────────────────────── */
+.about-section { padding: clamp(3rem, 7vh, 5rem) 0; }
+.about-prose { max-width: 66ch; margin-top: 2.2rem; }
+.about-prose p { font-size: 1rem; line-height: 1.75; color: var(--navy-mid); }
+.about-prose a { color: var(--gold); }
+.carrier-names { margin: 2.2rem 0 0; padding: 1.8rem 0;
+  border-top: 1px solid var(--paper-line); border-bottom: 1px solid var(--paper-line);
+  font-family: 'Playfair Display', var(--serif); font-size: clamp(1.3rem, 2.1vw, 1.6rem);
+  line-height: 1.9; color: var(--navy); text-align: center; }
+.carrier-names .nm { white-space: nowrap; }
+.carrier-names .sep { color: var(--gold); margin: 0 0.7rem; }
+.about-pull { font-family: 'Playfair Display', var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(1.3rem, 2.2vw, 1.6rem); line-height: 1.55; color: var(--navy);
+  text-align: center; max-width: 46ch; margin: 2.4rem auto 0; }
+.about-pull strong { color: var(--gold); font-weight: 500; }
+
+/* ── Estimator result CTA ───────────────────────────────────────────── */
+.est-cta { margin-top: 1.8rem; padding-top: 1.6rem; border-top: 1px solid var(--paper-line); }
+.est-cta .est-cta-note { font-size: 0.85rem; color: var(--navy-mid); margin: 0.8rem 0 0; }

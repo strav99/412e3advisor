@@ -38,7 +38,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/site.css?v=a1efbe47" />
+<link rel="stylesheet" href="/assets/site.css?v=844a607a" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -107,6 +107,7 @@
     </a>
     <nav class="primary" aria-label="Primary">
       <a href="/how-it-works">The Process</a>
+      <a href="/about">About</a>
       <a href="/#contact" class="cta">Begin A Conversation</a>
     </nav>
     <a href="https://remainlifeinsurance.com" class="nav-assess"><span class="na-label">Remain&nbsp;Life</span><span class="na-arrow" aria-hidden="true">&rarr;</span></a>
@@ -188,6 +189,50 @@
   </div>
 </section>
 
+<section class="handoff" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <hr class="rule-gold" />
+      <h2 class="display">Pressure-test <em>your estimate.</em></h2>
+      <p class="sub">
+        The estimator is directional &mdash; your real number comes from carrier illustrations run against your exact age, income, and entity structure. Send your details and a Remain advisor will model it properly, with a reply within one business day.
+      </p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <form class="lead-form" id="lead-form" novalidate>
+        <div class="lf-row two">
+          <label>Name
+            <input type="text" name="name" autocomplete="name" required /></label>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" required /></label>
+        </div>
+        <div class="lf-row two">
+          <label>Phone <span class="opt">&middot; optional</span>
+            <input type="tel" name="phone" autocomplete="tel" /></label>
+          <label>Age <span class="opt">&middot; optional</span>
+            <input type="text" name="age" inputmode="numeric" /></label>
+        </div>
+        <label>What should we know? <span class="opt">&middot; profession, approximate income, goals</span>
+          <textarea name="message" rows="4"></textarea></label>
+        <button type="submit" class="btn"><span>Send my request</span> <span class="arrow">&rarr;</span></button>
+        <p class="lf-note">We reply within one business day. No newsletter, no drip campaign &mdash; just the analysis.</p>
+        <p class="lf-status" role="status" aria-live="polite"></p>
+      </form>
+
+      <aside class="contact-direct">
+        <h3>Prefer to talk?</h3>
+        <p class="cd-num"><a href="tel:+17607505433">(760) 750-LIFE (5433)</a></p>
+        <p class="cd-sub">Call or text &mdash; you&rsquo;ll reach an advisor, not a call center.</p>
+        <h3>Email directly</h3>
+        <p><a href="mailto:office@remainlifeinsurance.com">office@remainlifeinsurance.com</a></p>
+        <h3>Office</h3>
+        <p>Encinitas, California</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- ──────────────────────── FOOTER ──────────────────────── -->
@@ -205,6 +250,7 @@
           <a href="/deduction-estimator" class="current">Deduction Estimator</a>
           <a href="/#faq">FAQ</a>
           <a href="/#contact">Request Feasibility</a>
+          <a href="/about">About Us</a>
           <a href="https://remainlifeinsurance.com">Remain Life Insurance</a>
           <a href="https://1035advisor.com">1035 Advisor</a>
         </nav>
@@ -320,6 +366,7 @@
         window.__estFired = true;
         gtag('event', 'estimator_result', { years_to_retirement: years, page_path: location.pathname });
       }
+      window.__est = { age: age, retire: retire, income: income, low: low, high: high };
 
       show(
         '<div class="metrics-grid">' +
@@ -338,6 +385,10 @@
             '<p class="k">A SEP-IRA or solo 401(k), for contrast</p>' +
             '<p class="v">The approximate ceiling on the plans most owners already use.</p>' +
           '</div>' +
+        '</div>' +
+        '<div class="est-cta">' +
+          '<a href="#contact" class="btn est-go"><span>Have an advisor pressure-test this number</span> <span class="arrow">&rarr;</span></a>' +
+          '<p class="est-cta-note">Free feasibility analysis from real carrier illustrations &mdash; no obligation, reply within one business day.</p>' +
         '</div>'
       );
     }
@@ -374,6 +425,72 @@
     var h = a.getAttribute('href') || '';
     var name = h.indexOf('tel:') === 0 ? 'call_click' : h.indexOf('sms:') === 0 ? 'text_click' : 'email_click';
     gtag('event', name, { link_url: h.split('?')[0], page_path: location.pathname });
+  });
+})();
+</script>
+<script>
+(function () {
+  // Desktop: show phone numbers as plain text (no app launching, no gimmicks).
+  var desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches && !('ontouchstart' in window);
+  if (desktop) {
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+      var s = document.createElement('span');
+      s.textContent = a.textContent;
+      s.style.cssText = 'color:inherit;';
+      a.replaceWith(s);
+    });
+  }
+  // Lead form: in-page submit, no mail app required.
+  var form = document.getElementById('lead-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var status = form.querySelector('.lf-status');
+    var btn = form.querySelector('button');
+    var data = {};
+    ['name', 'email', 'phone', 'age', 'message'].forEach(function (k) {
+      data[k] = (form.querySelector('[name="' + k + '"]') || {}).value || '';
+    });
+    if (!data.name || !data.email) {
+      status.textContent = 'Please add your name and email so we can reply.';
+      return;
+    }
+    data._subject = 'Feasibility request \u2014 412e3advisor.com';
+    data._template = 'table';
+    btn.disabled = true;
+    status.textContent = 'Sending\u2026';
+    fetch('https://formsubmit.co/ajax/office@remainlifeinsurance.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function (r) { return r.json(); }).then(function () {
+      form.querySelectorAll('input, textarea').forEach(function (el) { el.value = ''; });
+      status.textContent = 'Thank you \u2014 your request is in. We\u2019ll reply within one business day.';
+      btn.disabled = false;
+      if (typeof gtag === 'function') {
+        gtag('event', 'feasibility_request', { page_path: location.pathname });
+      }
+    }).catch(function () {
+      status.textContent = 'Something went wrong \u2014 please email office@remainlifeinsurance.com directly.';
+      btn.disabled = false;
+    });
+  });
+})();
+</script>
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('.est-go');
+    if (!a || !window.__est) return;
+    var f = document.getElementById('lead-form');
+    if (!f) return;
+    var d = window.__est;
+    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    f.querySelector('[name="age"]').value = d.age;
+    f.querySelector('[name="message"]').value =
+      'From the estimator: age ' + d.age + ', retiring at ' + d.retire + ', income ' + fmt(d.income) +
+      ' \u2014 estimated ' + fmt(d.low) + '\u2013' + fmt(d.high) + ' annual deductible contribution. ' +
+      'Please pressure-test this against real carrier illustrations.';
   });
 })();
 </script>
