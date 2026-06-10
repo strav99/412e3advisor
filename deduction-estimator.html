@@ -316,6 +316,11 @@
       var multiple = (mid / sep);
       var multipleTxt = multiple >= 1.1 ? ((Math.round(multiple * 10) / 10) + '× a SEP-IRA or solo 401(k)') : 'comparable to a SEP-IRA or solo 401(k)';
 
+      if (!window.__estFired && typeof gtag === 'function') {
+        window.__estFired = true;
+        gtag('event', 'estimator_result', { years_to_retirement: years, page_path: location.pathname });
+      }
+
       show(
         '<div class="metrics-grid">' +
           '<div class="metric">' +
@@ -359,5 +364,18 @@
   }
 </script>
 
+<script>
+(function () {
+  // GA4 conversion events: call/text/email taps
+  if (typeof gtag !== 'function') return;
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"], a[href^="mailto:"]');
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var name = h.indexOf('tel:') === 0 ? 'call_click' : h.indexOf('sms:') === 0 ? 'text_click' : 'email_click';
+    gtag('event', name, { link_url: h.split('?')[0], page_path: location.pathname });
+  });
+})();
+</script>
 </body>
 </html>
