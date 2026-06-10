@@ -12,7 +12,7 @@
   gtag('config', 'G-G8LLZYV89B');
 </script>
 
-<link rel="icon" type="image/png" href="/remain-mark.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
 <title>Page not found &mdash; 412(e)(3) Advisor</title>
 <meta name="robots" content="noindex" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -30,7 +30,7 @@
 <header class="site">
   <div class="container row">
     <a href="/" class="wordmark-small" aria-label="412(e)(3) Advisor — home">
-      <img class="wm-mark" src="/remain-mark.png" alt="" />
+      <img class="wm-mark" src="/logo-mark.png" alt="" />
       <span class="wm-text">
         <span class="wm-name"><span class="wm-num">412(e)(3)</span> <span class="wm-word">Advisor</span></span>
       </span>
@@ -62,6 +62,38 @@
     var h = a.getAttribute('href') || '';
     var name = h.indexOf('tel:') === 0 ? 'call_click' : h.indexOf('sms:') === 0 ? 'text_click' : 'email_click';
     gtag('event', name, { link_url: h.split('?')[0], page_path: location.pathname });
+  });
+})();
+</script>
+<script>
+(function () {
+  // Desktop: tel: links copy the number instead of launching an app.
+  // Touch devices keep native tap-to-call.
+  var desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+                && !('ontouchstart' in window);
+  if (!desktop) return;
+  function toast(msg) {
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);' +
+      'background:#15241B;color:#F4F1E9;padding:10px 22px;border-radius:6px;' +
+      'font:500 14px/1.4 Inter,sans-serif;letter-spacing:.02em;z-index:9999;' +
+      'box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .25s ease;';
+    document.body.appendChild(t);
+    requestAnimationFrame(function(){ t.style.opacity = '1'; });
+    setTimeout(function(){ t.style.opacity = '0'; setTimeout(function(){ t.remove(); }, 300); }, 2200);
+  }
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
+    if (!a) return;
+    e.preventDefault();
+    var num = '(760) 750-5433';
+    function done(){ toast('Phone number copied \u2014 ' + num); }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(done, done);
+      } else { done(); }
+    } catch (err) { done(); }
   });
 })();
 </script>

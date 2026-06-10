@@ -281,21 +281,22 @@ footer.site { color: var(--navy-deep); font-size: 0.875rem; }
 .footer-practice-grid a:hover { color: var(--gold); }
 .footer-practice-grid a.current { color: var(--gold); font-weight: 500; }
 
-.footer-bottom { background: var(--fog); padding: clamp(1.5rem, 3vh, 2rem) 0 1.5rem; color: var(--navy-deep); }
+.footer-bottom { background: var(--navy-deep); padding: clamp(1.5rem, 3vh, 2rem) 0 1.5rem; color: var(--paper); }
 .footer-info-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 1.5rem; }
 @media (min-width: 800px) { .footer-info-grid { grid-template-columns: 1.4fr 1fr 1.1fr; gap: 4rem; } }
 .footer-bottom .wordmark-foot { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.4rem; }
 .footer-bottom .wordmark-foot .wm-mark { height: 48px; width: auto; display: block; flex: 0 0 auto; }
 .footer-bottom .wordmark-foot .wm-text { display: flex; flex-direction: column; gap: 4px; line-height: 1; }
+.footer-bottom .wordmark-foot .wm-name .wm-num { color: var(--gold-soft); }
 .footer-bottom .wordmark-foot .wm-name { font-family: 'Playfair Display', var(--serif); font-size: 1.5rem; letter-spacing: 0.04em; color: var(--navy-deep); text-transform: uppercase; font-weight: 700; line-height: 1; font-variant-numeric: lining-nums tabular-nums; font-feature-settings: "lnum" 1, "tnum" 1; }
-.footer-bottom .wordmark-foot .wm-name .wm-word { color: var(--navy-deep); }
-.footer-bottom .wordmark-foot .sub { font-family: var(--label); font-size: 10px; letter-spacing: 0.26em; color: var(--navy-deep); font-weight: 400; line-height: 1; }
-.brand-col p { max-width: 38ch; margin: 1rem 0 0; line-height: 1.55; color: var(--navy-deep); font-size: 0.9375rem; }
-.info-col h4 { font-family: var(--label); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy-deep); margin: 0 0 0.8rem; }
+.footer-bottom .wordmark-foot .wm-name .wm-word { color: var(--paper); }
+.footer-bottom .wordmark-foot .sub { font-family: var(--label); font-size: 10px; letter-spacing: 0.26em; color: var(--gold-soft); font-weight: 400; line-height: 1; }
+.brand-col p { max-width: 38ch; margin: 1rem 0 0; line-height: 1.55; color: var(--mist); font-size: 0.9375rem; }
+.info-col h4 { font-family: var(--label); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-soft); margin: 0 0 0.8rem; }
 .info-col .stack { display: flex; flex-direction: column; gap: 0.2rem; }
-.info-col p, .info-col a { color: var(--navy-deep); line-height: 1.55; margin: 0; font-size: 0.9375rem; transition: color 220ms ease; }
-.info-col a:hover { color: var(--gold); }
-.footer-bottom .legal { border-top: 1px solid rgba(14, 28, 54, 0.18); margin-inline: clamp(0.5rem, 2vw, 1.5rem); padding-top: 1rem; text-align: center; color: var(--navy-deep); font-size: 0.78rem; line-height: 1.55; letter-spacing: 0.04em; opacity: 0.85; }
+.info-col p, .info-col a { color: var(--mist); line-height: 1.55; margin: 0; font-size: 0.9375rem; transition: color 220ms ease; }
+.info-col a:hover { color: var(--gold-soft); }
+.footer-bottom .legal { border-top: 1px solid rgba(244, 241, 233, 0.18); margin-inline: clamp(0.5rem, 2vw, 1.5rem); padding-top: 1rem; text-align: center; color: var(--mist); font-size: 0.78rem; line-height: 1.55; letter-spacing: 0.04em; opacity: 0.85; }
 .footer-bottom .legal p { margin: 0 0 0.5rem; max-width: none; }
 .footer-bottom .legal p:last-child { margin-bottom: 0; }
 
