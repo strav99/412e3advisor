@@ -189,8 +189,7 @@
       <p class="sub closing-line">Reach a Remain advisor by phone, text, or email &mdash; whichever works for you.</p>
     </div>
     <div class="actions reveal">
-      <a href="mailto:office@remainlifeinsurance.com?subject=412%28e%29%283%29%20feasibility&body=I%27d%20like%20to%20explore%20a%20412%28e%29%283%29%20plan.%20My%20age%2C%20profession%2C%20and%20approximate%20income%3A" class="btn"><span>Request A Feasibility Analysis</span><span class="arrow">&rarr;</span></a>
-      <a href="tel:+17607505433" class="btn btn-ghost"><span>Call Or Text Us</span><span class="arrow">&rarr;</span></a>
+      <a href="/#contact" class="btn"><span>Request A Feasibility Analysis</span><span class="arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -251,7 +250,7 @@
       </div>
       <div class="legal">
         <p>412(e)(3) Advisor is a practice name of Remain Life Insurance Services, LLC. Information on this site is for general educational purposes and is not tax, legal, or investment advice, nor a solicitation or offer of insurance in any state where the firm is not licensed. 412(e)(3) plans involve insurance and annuity contracts and are subject to IRS qualification rules, underwriting, carrier approval, and policy terms. Consult your own tax and legal advisors before adopting any qualified plan.</p>
-        <p>&copy; <span id="year">2026</span> Remain Life Insurance Services, LLC &middot; 412e3advisor.com</p>
+        <p>&copy; <span id="year">2026</span> Remain Life Insurance Services, LLC &middot; 412e3advisor.com &middot; <a href="https://remainlifeinsurance.com/privacy" style="color: inherit;">Privacy</a></p>
       </div>
     </div>
   </div>
@@ -281,38 +280,6 @@
     var h = a.getAttribute('href') || '';
     var name = h.indexOf('tel:') === 0 ? 'call_click' : h.indexOf('sms:') === 0 ? 'text_click' : 'email_click';
     gtag('event', name, { link_url: h.split('?')[0], page_path: location.pathname });
-  });
-})();
-</script>
-<script>
-(function () {
-  // Desktop: tel: links copy the number instead of launching an app.
-  // Touch devices keep native tap-to-call.
-  var desktop = window.matchMedia('(hover: hover) and (pointer: fine)').matches
-                && !('ontouchstart' in window);
-  if (!desktop) return;
-  function toast(msg) {
-    var t = document.createElement('div');
-    t.textContent = msg;
-    t.style.cssText = 'position:fixed;left:50%;bottom:28px;transform:translateX(-50%);' +
-      'background:#15241B;color:#F4F1E9;padding:10px 22px;border-radius:6px;' +
-      'font:500 14px/1.4 Inter,sans-serif;letter-spacing:.02em;z-index:9999;' +
-      'box-shadow:0 6px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .25s ease;';
-    document.body.appendChild(t);
-    requestAnimationFrame(function(){ t.style.opacity = '1'; });
-    setTimeout(function(){ t.style.opacity = '0'; setTimeout(function(){ t.remove(); }, 300); }, 2200);
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest && e.target.closest('a[href^="tel:"]');
-    if (!a) return;
-    e.preventDefault();
-    var num = '(760) 750-5433';
-    function done(){ toast('Phone number copied \u2014 ' + num); }
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(num).then(done, done);
-      } else { done(); }
-    } catch (err) { done(); }
   });
 })();
 </script>
