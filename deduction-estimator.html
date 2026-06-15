@@ -470,6 +470,7 @@
       btn.disabled = false;
       if (typeof gtag === 'function') {
         gtag('event', 'feasibility_request', { page_path: location.pathname });
+        gtag('event', 'ads_conversion_About_Us_1', {});
       }
     }).catch(function () {
       status.textContent = 'Something went wrong \u2014 please email office@remainlifeinsurance.com directly.';
