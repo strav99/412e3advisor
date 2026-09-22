@@ -185,7 +185,7 @@
     </div>
 
     <p class="est-note" style="max-width:78ch;">
-      <strong>Illustrative only.</strong> This estimator uses simplified assumptions &mdash; a guaranteed accumulation rate, a level annuity conversion factor, and the IRS maximum-benefit limit for defined-benefit plans &mdash; to suggest a rough range. It is not a quote, a projection of any specific plan, or tax advice. Your actual deductible contribution is set by the IRS maximum-benefit limit, your income, your census, and carrier-specific contract design, and is determined by a feasibility analysis run by Remain Life Insurance Services, LLC.
+      <strong>Illustrative only.</strong> This estimator uses simplified assumptions &mdash; a guaranteed accumulation rate, a level annuity conversion factor, and the 2026 IRS maximum-benefit limit for defined-benefit plans, reduced by 10% for each year under ten that the plan is funded &mdash; to suggest a rough range. It is not a quote, a projection of any specific plan, or tax advice. Your actual deductible contribution is set by the IRS maximum-benefit limit, your income, your census, and carrier-specific contract design, and is determined by a feasibility analysis run by Remain Life Insurance Services, LLC.
     </p>
   </div>
 </section>
@@ -301,7 +301,7 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   (function () {
-    var MAX_BENEFIT = 280000;   // IRS §415(b) maximum annual DB benefit (illustrative, 2025)
+    var MAX_BENEFIT = 290000;   // IRS §415(b) maximum annual DB benefit (2026)
     var ANNUITY_FACTOR = 13;    // level annual benefit → lump sum at retirement (conservative)
     var GUARANTEED_RATE = 0.035;// assumed guaranteed accumulation rate
 
@@ -347,7 +347,11 @@
       }
 
       // Target benefit capped by the §415(b) limit and by income.
-      var benefit = Math.min(MAX_BENEFIT, income);
+      // §415(b)(5): the dollar limit is reduced by 1/10 for each year of
+      // plan participation under 10. The plan funds over the runway, so
+      // participation years = years to retirement.
+      var phaseIn = Math.min(years, 10) / 10;
+      var benefit = Math.min(MAX_BENEFIT * phaseIn, income);
       var targetLump = benefit * ANNUITY_FACTOR;
       // Level annual contribution to accumulate the target at the guaranteed rate.
       var growth = Math.pow(1 + GUARANTEED_RATE, years) - 1;
@@ -358,7 +362,8 @@
       var low = roundTo(annual * 0.85, 5000);
       var high = roundTo(annual * 1.15, 5000);
       var mid = roundTo(annual, 5000);
-      var sep = 70000;
+      // 2026 §415(c) limit; a solo 401(k) adds the $8,000 age-50 catch-up.
+      var sep = age >= 50 ? 80000 : 72000;
       var taxSaved = roundTo(mid * rate, 1000);
       var multiple = (mid / sep);
       var multipleTxt = multiple >= 1.1 ? ((Math.round(multiple * 10) / 10) + '× a SEP-IRA or solo 401(k)') : 'comparable to a SEP-IRA or solo 401(k)';
@@ -374,7 +379,7 @@
           '<div class="metric">' +
             '<p class="figure">' + money(low) + '&ndash;' + money(high) + '</p>' +
             '<p class="k">Estimated annual deductible contribution</p>' +
-            '<p class="v">Roughly ' + multipleTxt + ', concentrated over your ' + years + '-year runway to retirement.</p>' +
+            '<p class="v">Roughly ' + multipleTxt + ', concentrated over your ' + years + '-year runway to retirement.' + (years < 10 ? ' Because that runway is under ten years, the IRS maximum benefit is reduced to ' + Math.round(phaseIn * 100) + '% of the limit, and this range reflects it.' : '') + '</p>' +
           '</div>' +
           '<div class="metric">' +
             '<p class="figure">' + money(taxSaved) + '</p>' +
@@ -384,7 +389,7 @@
           '<div class="metric">' +
             '<p class="figure">' + money(sep) + '</p>' +
             '<p class="k">A SEP-IRA or solo 401(k), for contrast</p>' +
-            '<p class="v">The approximate ceiling on the plans most owners already use.</p>' +
+            '<p class="v">' + (age >= 50 ? 'The 2026 ceiling on a solo 401(k) with the age-50 catch-up ($72,000 for a SEP-IRA).' : 'The 2026 ceiling on a SEP-IRA or solo 401(k).') + '</p>' +
           '</div>' +
         '</div>' +
         '<div class="est-cta">' +
